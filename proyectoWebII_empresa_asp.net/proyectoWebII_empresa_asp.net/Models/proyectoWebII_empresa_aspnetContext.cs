@@ -20,5 +20,7 @@ namespace proyectoWebII_empresa_asp.net.Models
         }
 
         public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.usuario> usuarios { get; set; }
+
+        public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.Cliente> Clientes { get; set; }
     }
 }
