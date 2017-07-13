@@ -24,5 +24,9 @@ namespace proyectoWebII_empresa_asp.net.Models
         public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.Cliente> Clientes { get; set; }
 
         public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.Contacto> Contactoes { get; set; }
+
+        public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.Reunion> Reunions { get; set; }
+
+        public System.Data.Entity.DbSet<proyectoWebII_empresa_asp.net.Models.Soporte> Soportes { get; set; }
     }
 }
