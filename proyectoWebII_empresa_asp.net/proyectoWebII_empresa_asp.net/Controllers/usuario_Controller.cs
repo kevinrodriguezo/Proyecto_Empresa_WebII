@@ -12,12 +12,12 @@ namespace proyectoWebII_empresa_asp.net.Controllers
 {
     public class usuario_Controller : Controller
     {
-        private proyectoWebII_empresa_aspnetContext db = new proyectoWebII_empresa_aspnetContext();
+        private CRM db = new CRM();
 
         // GET: usuario_
         public ActionResult Index()
         {
-            return View(db.usuarios.ToList());
+            return View(db.usuario.ToList());
         }
 
         // GET: usuario_/Details/5
@@ -27,7 +27,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
+            usuario usuario = db.usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.usuarios.Add(usuario);
+                db.usuario.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
+            usuario usuario = db.usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
+            usuario usuario = db.usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace proyectoWebII_empresa_asp.net.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            usuario usuario = db.usuarios.Find(id);
-            db.usuarios.Remove(usuario);
+            usuario usuario = db.usuario.Find(id);
+            db.usuario.Remove(usuario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

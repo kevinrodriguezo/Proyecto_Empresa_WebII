@@ -12,12 +12,13 @@ namespace proyectoWebII_empresa_asp.net.Controllers
 {
     public class Reunion_Controller : Controller
     {
-        private proyectoWebII_empresa_aspnetContext db = new proyectoWebII_empresa_aspnetContext();
+        private CRM db = new CRM();
 
         // GET: Reunion_
         public ActionResult Index()
         {
-            return View(db.Reunions.ToList());
+            var reunion = db.Reunion.Include(r => r.Cliente).Include(r => r.usuario);
+            return View(reunion.ToList());
         }
 
         // GET: Reunion_/Details/5
@@ -27,7 +28,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reunion reunion = db.Reunions.Find(id);
+            Reunion reunion = db.Reunion.Find(id);
             if (reunion == null)
             {
                 return HttpNotFound();
@@ -38,6 +39,8 @@ namespace proyectoWebII_empresa_asp.net.Controllers
         // GET: Reunion_/Create
         public ActionResult Create()
         {
+            ViewBag.id_cliente = new SelectList(db.Cliente, "ID", "nombre");
+            ViewBag.id_usuario = new SelectList(db.usuario, "id", "nombre");
             return View();
         }
 
@@ -50,11 +53,13 @@ namespace proyectoWebII_empresa_asp.net.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Reunions.Add(reunion);
+                db.Reunion.Add(reunion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_cliente = new SelectList(db.Cliente, "ID", "nombre", reunion.id_cliente);
+            ViewBag.id_usuario = new SelectList(db.usuario, "id", "nombre", reunion.id_usuario);
             return View(reunion);
         }
 
@@ -65,11 +70,13 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reunion reunion = db.Reunions.Find(id);
+            Reunion reunion = db.Reunion.Find(id);
             if (reunion == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.id_cliente = new SelectList(db.Cliente, "ID", "nombre", reunion.id_cliente);
+            ViewBag.id_usuario = new SelectList(db.usuario, "id", "nombre", reunion.id_usuario);
             return View(reunion);
         }
 
@@ -86,6 +93,8 @@ namespace proyectoWebII_empresa_asp.net.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_cliente = new SelectList(db.Cliente, "ID", "nombre", reunion.id_cliente);
+            ViewBag.id_usuario = new SelectList(db.usuario, "id", "nombre", reunion.id_usuario);
             return View(reunion);
         }
 
@@ -96,7 +105,7 @@ namespace proyectoWebII_empresa_asp.net.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reunion reunion = db.Reunions.Find(id);
+            Reunion reunion = db.Reunion.Find(id);
             if (reunion == null)
             {
                 return HttpNotFound();
@@ -109,8 +118,8 @@ namespace proyectoWebII_empresa_asp.net.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reunion reunion = db.Reunions.Find(id);
-            db.Reunions.Remove(reunion);
+            Reunion reunion = db.Reunion.Find(id);
+            db.Reunion.Remove(reunion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
