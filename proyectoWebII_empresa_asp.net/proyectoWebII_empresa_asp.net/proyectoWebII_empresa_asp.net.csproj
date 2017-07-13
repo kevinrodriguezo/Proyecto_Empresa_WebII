@@ -184,9 +184,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Cliente_Controller.cs" />
+    <Compile Include="Controllers\Contacto_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Reunion_Controller.cs" />
+    <Compile Include="Controllers\Soporte_Controller.cs" />
     <Compile Include="Controllers\usuario_Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -270,6 +273,21 @@
     <Content Include="Views\Reunion_\Details.cshtml" />
     <Content Include="Views\Reunion_\Edit.cshtml" />
     <Content Include="Views\Reunion_\Index.cshtml" />
+    <Content Include="Views\Cliente_\Create.cshtml" />
+    <Content Include="Views\Cliente_\Delete.cshtml" />
+    <Content Include="Views\Cliente_\Details.cshtml" />
+    <Content Include="Views\Cliente_\Edit.cshtml" />
+    <Content Include="Views\Cliente_\Index.cshtml" />
+    <Content Include="Views\Contacto_\Create.cshtml" />
+    <Content Include="Views\Contacto_\Delete.cshtml" />
+    <Content Include="Views\Contacto_\Details.cshtml" />
+    <Content Include="Views\Contacto_\Edit.cshtml" />
+    <Content Include="Views\Contacto_\Index.cshtml" />
+    <Content Include="Views\Soporte_\Create.cshtml" />
+    <Content Include="Views\Soporte_\Delete.cshtml" />
+    <Content Include="Views\Soporte_\Details.cshtml" />
+    <Content Include="Views\Soporte_\Edit.cshtml" />
+    <Content Include="Views\Soporte_\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
